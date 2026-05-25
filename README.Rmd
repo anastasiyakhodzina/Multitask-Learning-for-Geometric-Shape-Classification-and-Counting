@@ -1,0 +1,70 @@
+---
+title: "README"
+author: "Anastasiya Khodzina"
+date: '2025-11-25'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Multitask Learning for Geometric Shape Classification and Counting
+
+This project implements a multitask deep learning model (DragonModel) designed to solve two objectives simultaneously:
+
+1.  **Classification:** Identifying pairs of geometric shapes in $28 \times 28$ grayscale images (GSN Dataset).
+
+2.  **Regression:** Counting the number of occurrences for each shape type.
+
+The project demonstrates how using a shared backbone with two task-specific heads improves training stability and feature learning compared to single-task baselines.
+
+## Fast Replication (Google Colab)
+
+You can reproduce the experiments, training, and evaluation directly in your browser using Google Colab.
+
+[Open In Colab](https://colab.research.google.com/drive/1diCeU7w7iWrAWxxQ7lSdssZ8gAZiUE7L?usp=sharing)
+
+---
+
+## Approximate Runtime
+
+The code is optimized to run quickly on standard cloud GPUs.
+
+* **Device:** T4 GPU (Standard Colab Free Tier) or A100.
+* **Total Execution Time:** ~60 minutes for all three experiments.
+
+---
+
+## Expected Outputs
+
+Upon successful execution of the notebook, the following assets will be generated:
+
+### 1. Training Visualization (Plots)
+At the end of each training experiment, static `matplotlib` charts are generated showing learning curves to visualize performance:
+
+* **Loss History:** Validation loss.
+
+* **Accuracy History:** Validation Accuracy evolution.
+
+* **RMSE History:** Validation RMSE evolution.
+
+### 2. Saved Models
+The best-performing weights for each model (based on validation metrics) are automatically saved in the local Colab environment as `.pth` files:
+
+* `best_multitask_model_params.pth`
+
+* `best_cls_only_model_params.pth`
+
+* `best_reg_only_model_params.pth`
+
+---
+
+##  Resource Requirements
+
+### Hardware
+* **GPU:** Strongly recommended (NVIDIA T4 or better).
+* **RAM:** 8 GB minimum (12 GB recommended).
+
+### Software & Dependencies
+* **Python:** 3.8+
+* **Key Libraries:** `torch`, `torchvision`, `pandas`, `numpy`, `matplotlib`, `plotly`, `tqdm`, `scikit-learn`, `Pillow`.
